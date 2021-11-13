@@ -5,11 +5,11 @@ package com.github.shoothzj.algorithm.binary;
  */
 public class SearchValueInArray {
 
-    public int bsearch(int[] a, int n, int value) {
+    public int binarySearch(int[] a, int n, int value) {
         int low = 0;
         int high = n - 1;
 
-        while (low < high) {
+        while (low <= high) {
             int mid = low + (high - low) / 2;
             if (a[mid] == value) {
                 return mid;
