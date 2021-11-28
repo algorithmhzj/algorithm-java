@@ -14,11 +14,17 @@ class LeetCodeUtilTest {
     @Test
     public void testConstructListNode() {
         ListNode listNode = LeetCodeUtil.constructListNode("199");
-        Assertions.assertEquals(listNode.val, 1);
+        Assertions.assertEquals(1, listNode.val);
         listNode = listNode.next;
-        Assertions.assertEquals(listNode.val, 9);
+        Assertions.assertEquals(9, listNode.val);
         listNode = listNode.next;
-        Assertions.assertEquals(listNode.val, 9);
+        Assertions.assertEquals(9, listNode.val);
+    }
+
+    @Test
+    public void testConstructTreeNode() {
+        TreeNode rootNode = LeetCodeUtil.constructTreeNode(new Integer[]{5, 1, 5, 5, 5, null, 5});
+        Assertions.assertEquals(5, rootNode.val);
     }
 
 }

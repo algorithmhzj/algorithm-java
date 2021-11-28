@@ -1,5 +1,8 @@
 package com.github.shoothzj.algorithm.leetcode;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class LeetCodeUtil {
 
     /**
@@ -71,6 +74,43 @@ public class LeetCodeUtil {
             tail = aux;
         }
         return tail;
+    }
+
+    public static TreeNode constructTreeNode(Integer[] integers) {
+        TreeNode root = new TreeNode(integers[0]);
+        ArrayList<TreeNode> list = new ArrayList<>();
+        list.add(root);
+        constructTreeNode(list, integers, 1);
+        return root;
+    }
+
+    private static void constructTreeNode(List<TreeNode> treeNodes, Integer[] integers, int index) {
+        if (index == integers.length) {
+            return;
+        }
+        List<TreeNode> list = new ArrayList<>();
+        for (int i = 0; i < treeNodes.size(); i++) {
+            TreeNode treeNode = treeNodes.get(i);
+            if (treeNode == null) {
+                list.add(null);
+                list.add(null);
+                continue;
+            }
+            TreeNode leftNode = integer2TreeNode(integers[index + 2 * i]);
+            TreeNode rightNode = integer2TreeNode(integers[index + 2 * i + 1]);
+            treeNode.left = leftNode;
+            treeNode.right = rightNode;
+            list.add(leftNode);
+            list.add(rightNode);
+        }
+        constructTreeNode(list, integers, index + treeNodes.size() * 2);
+    }
+
+    private static TreeNode integer2TreeNode(Integer integer) {
+        if (integer == null) {
+            return null;
+        }
+        return new TreeNode(integer);
     }
 
 }
